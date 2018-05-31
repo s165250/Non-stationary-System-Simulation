@@ -1,0 +1,61 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        mc:Ignorable="d"
+        Title="Symulator" Height="720" Width="1200" Cursor="Arrow">
+    <Grid Margin="0,0,-0.4,0.4" HorizontalAlignment="Left" Width="1194">
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="#FF3565C3" Offset="1"/>
+                <GradientStop Color="#FF8BB2FF"/>
+            </RadialGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="415.2" MaxWidth="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel x:Name="LeftMenu" HorizontalAlignment="Left" Height="580" Margin="0,100,0,0" VerticalAlignment="Top" Width="200">
+            <Grid x:Name="Coeffs_Pane" HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="160" Margin="40,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" MaxHeight="60" MinHeight="60"/>
+                    <RowDefinition Height="60" MaxHeight="60" MinHeight="60"/>
+                    <RowDefinition Height="60*" MaxHeight="60" MinHeight="60"/>
+                    <RowDefinition Height="60*" MaxHeight="60" MinHeight="60"/>
+                    <RowDefinition Height="60*" MaxHeight="60" MinHeight="60"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="TXT_a" HorizontalAlignment="Left" Height="25" TextWrapping="Wrap" Text="a = " Width="22" FontWeight="Bold" VerticalAlignment="Top" Margin="30,25,0,0"/>
+                <TextBox x:Name="COEFF_a" HorizontalAlignment="Left" Height="25" Margin="10,25,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="30" MaxLength="3" Grid.Column="1"/>
+                <TextBlock HorizontalAlignment="Left" Height="25" Margin="30,25,0,0" TextWrapping="Wrap" Text="b = " VerticalAlignment="Top" Width="22" FontWeight="Bold" Grid.Row="1"/>
+                <TextBox x:Name="COEFF_b" HorizontalAlignment="Left" Height="25" Margin="10,25,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="30" MaxLength="3" Grid.Column="1" Grid.Row="1"/>
+                <TextBlock HorizontalAlignment="Left" Height="25" Margin="30,25,0,0" TextWrapping="Wrap" Text="c = " VerticalAlignment="Top" Width="22" FontWeight="Bold" Grid.Row="2"/>
+                <TextBox x:Name="COEFF_c" HorizontalAlignment="Left" Height="25" Margin="10,25,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="30" MaxLength="3" Grid.Column="1" Grid.Row="2"/>
+                <TextBlock HorizontalAlignment="Left" Height="25" Margin="30,25,0,0" TextWrapping="Wrap" Text="A = " VerticalAlignment="Top" Width="22" FontWeight="Bold" Grid.Row="3"/>
+                <TextBox x:Name="COEFF_alfa" HorizontalAlignment="Left" Height="25" Margin="10,25,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="30" MaxLength="3" Grid.Column="1" Grid.Row="3"/>
+                <TextBlock HorizontalAlignment="Left" Height="25" Margin="30,24.2,0,0" TextWrapping="Wrap" Text="B = " VerticalAlignment="Top" Width="22" FontWeight="Bold" Grid.Row="4"/>
+                <TextBox x:Name="COEFF_beta" HorizontalAlignment="Left" Height="25" Margin="10,23.2,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="30" MaxLength="3" Grid.Column="1" Grid.Row="4"/>
+            </Grid>
+            <RadioButton x:Name="Exponential_C" Content="c(t) = A + A*exp(-B*t)" VerticalAlignment="Top" Checked="Exponential_C_Checked" Height="16" HorizontalAlignment="Left" Width="133" Margin="50,10,0,0"/>
+            <RadioButton x:Name="SINUS_C" Content="c(t) = 2*A + A*sin(B*t)" Checked="SINUS_C_Checked" HorizontalAlignment="Left" Width="135" Height="15" Margin="50,10,0,0"/>
+            <Button x:Name="save_data" Content="Zapisz dane" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Click="Save_Data_Click" Height="42" AutomationProperties.HelpText="Kliknięcie spowoduje zapisanie współczynników równania różniczkowego." Margin="50,20,0,0"/>
+            <Button x:Name="BTN_CT" Content="Wyznacz wartości&#xD;&#xA; funkcji" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="50,20,0,0" Height="34" Click="BTN_CT_Click"/>
+        </StackPanel>
+        <RichTextBox x:Name="equation" HorizontalAlignment="Left" Height="60" Margin="40,40,0,0" VerticalAlignment="Top" Width="425" Background="Transparent" FontWeight="Bold" FontStyle="Italic" FontSize="20" Grid.ColumnSpan="2">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="y'''(t) + a*y''(t) + b*y'(t) + c(t)*y(t) = u(t)"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Canvas HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
+        <Grid Grid.Column="1" HorizontalAlignment="Left" Height="400" Margin="90,105,0,0" VerticalAlignment="Top" Width="850">
+        </Grid>
+    </Grid>
+</Window>
