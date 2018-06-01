@@ -31,11 +31,15 @@ namespace WpfApp1
         double alfa = 0;
         double beta = 0;
         private int function = 0;
+        SolidColorBrush Chart_Color = new SolidColorBrush(Colors.Black);
+        double Chart_Thickness = 1.5;
 
         public MainWindow()
         {
             InitializeComponent();
             Exponential_C.IsChecked = true;
+            draw_Axes(chart_1);
+            draw_Axes(chart_2);
         }
 
         public static double Integrate(double start_x, double stop_x)
@@ -114,7 +118,107 @@ namespace WpfApp1
                 return -356;
             }
         }
-      
+        private void draw_Axes(Canvas chart_pole)
+        {
+            // OŚ Y
+            Line axisY = new Line();
+            axisY.Stroke = Chart_Color;
+            axisY.StrokeThickness = Chart_Thickness;
+
+            axisY.X1 = 20;
+            axisY.X2 = 20;
+            axisY.Y1 = 10;
+            axisY.Y2 = 280;
+            chart_pole.Children.Add(axisY);
+
+            // OŚ X
+            Line axisX = new Line();
+            axisX.Stroke = Chart_Color;
+            axisX.StrokeThickness = Chart_Thickness;
+
+            axisX.X1 = 20;
+            axisX.X2 = 830;
+            axisX.Y1 = 150;
+            axisX.Y2 = 150;
+
+            chart_pole.Children.Add(axisX);
+            
+
+            // STRZAŁKA OŚ X
+            Line arrowX1 = new Line();
+            arrowX1.Stroke = Chart_Color;
+            arrowX1.StrokeThickness = Chart_Thickness;
+
+            arrowX1.X1 = 820;
+            arrowX1.X2 = 830;
+            arrowX1.Y1 = 144;
+            arrowX1.Y2 = 150;
+
+            chart_pole.Children.Add(arrowX1);
+
+            Line arrowX2 = new Line();
+            arrowX2.Stroke = Chart_Color;
+            arrowX2.StrokeThickness = Chart_Thickness;
+
+            arrowX2.X1 = 820;
+            arrowX2.X2 = 830;
+            arrowX2.Y1 = 156;
+            arrowX2.Y2 = 150;
+
+            chart_pole.Children.Add(arrowX2);
+
+            // STZAŁKA OŚ Y
+            Line arrowY1 = new Line();
+            arrowY1.Stroke = Chart_Color;
+            arrowY1.StrokeThickness = Chart_Thickness;
+
+            arrowY1.X1 = 14;
+            arrowY1.X2 = 20;
+            arrowY1.Y1 = 20;
+            arrowY1.Y2 = 10;
+
+            chart_pole.Children.Add(arrowY1);
+
+            Line arrowY2 = new Line();
+            arrowY2.Stroke = Chart_Color;
+            arrowY2.StrokeThickness = Chart_Thickness;
+
+            arrowY2.X1 = 26;
+            arrowY2.X2 = 20;
+            arrowY2.Y1 = 20;
+            arrowY2.Y2 = 10;
+
+            chart_pole.Children.Add(arrowY2);
+
+            // SKALA OŚ X
+
+            for(int index = 0; index <9; index++)
+            {
+                Line scale = new Line();
+                scale.Stroke = Chart_Color;
+                scale.StrokeThickness = Chart_Thickness;
+                scale.X1 = (index + 1) * 81+20;
+                scale.X2 = scale.X1;
+                scale.Y1 = 145;
+                scale.Y2 = 155;
+                chart_pole.Children.Add(scale);
+            }
+
+            // SKALA OŚ Y
+
+            for(int index = -4; index <3; index++)
+            {
+                Line scale = new Line();
+                scale.Stroke = Chart_Color;
+                scale.StrokeThickness = Chart_Thickness;
+                scale.X1 = 15;
+                scale.X2 = 25;
+                scale.Y1 = 150 + (index + 1) * 40 ;
+                scale.Y2 = scale.Y1;
+                chart_pole.Children.Add(scale);
+            }
+
+        }
     }
 
 }

@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:WpfApp1"
         xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
-        Title="Symulator" Height="720" Width="1200" Cursor="Arrow">
-    <Grid Margin="0,0,-0.4,0.4" HorizontalAlignment="Left" Width="1194">
+        Title="Symulator" Height="780" Width="1280" Cursor="Arrow">
+    <Grid Margin="0,0,-0.4,0.4" HorizontalAlignment="Left" Width="1275" Height="750">
         <Grid.Background>
             <RadialGradientBrush>
                 <GradientStop Color="#FF3565C3" Offset="1"/>
@@ -47,15 +47,16 @@
             <Button x:Name="save_data" Content="Zapisz dane" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Click="Save_Data_Click" Height="42" AutomationProperties.HelpText="Kliknięcie spowoduje zapisanie współczynników równania różniczkowego." Margin="50,20,0,0"/>
             <Button x:Name="BTN_CT" Content="Wyznacz wartości&#xD;&#xA; funkcji" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="50,20,0,0" Height="34" Click="BTN_CT_Click"/>
         </StackPanel>
-        <RichTextBox x:Name="equation" HorizontalAlignment="Left" Height="60" Margin="40,40,0,0" VerticalAlignment="Top" Width="425" Background="Transparent" FontWeight="Bold" FontStyle="Italic" FontSize="20" Grid.ColumnSpan="2">
-            <FlowDocument>
-                <Paragraph>
-                    <Run Text="y'''(t) + a*y''(t) + b*y'(t) + c(t)*y(t) = u(t)"/>
-                </Paragraph>
-            </FlowDocument>
-        </RichTextBox>
-        <Canvas HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
-        <Grid Grid.Column="1" HorizontalAlignment="Left" Height="400" Margin="90,105,0,0" VerticalAlignment="Top" Width="850">
-        </Grid>
+        <StackPanel Grid.Column="1" HorizontalAlignment="Left" Height="680" Margin="90,20,0,0" VerticalAlignment="Top" Width="850">
+            <RichTextBox x:Name="equation" HorizontalAlignment="Center" Height="30" VerticalAlignment="Top" Width="425" Background="Transparent" FontWeight="Bold" FontStyle="Italic" FontSize="20">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text="y'''(t) + a*y''(t) + b*y'(t) + c(t)*y(t) = u(t)"/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+            <Canvas x:Name="chart_1" HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="850" Background="White" Margin="0,20,0,0"/>
+            <Canvas x:Name="chart_2" HorizontalAlignment="Left" Height="300" Margin="0,20,-0.4,0" VerticalAlignment="Top" Width="850" Background="White"/>
+        </StackPanel>
     </Grid>
 </Window>
