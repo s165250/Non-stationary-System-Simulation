@@ -340,6 +340,7 @@ namespace WpfApp1
         {
             int x = trianglepart % 4;
             double value = 0;
+            double slope = 1 / (period / 4); // Wspoczynnik nachylenia fali trójkątnej
             switch (x)
             {
                 case 0:
